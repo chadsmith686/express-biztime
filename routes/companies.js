@@ -105,6 +105,19 @@ router.put("/:code", async (req, res, next) => {
 router.delete("/:code", async (req, res, next) => {
     try {
 
+        let code = req.params.code;
+        const result = await db.query(
+          `DELETE FROM companies
+           WHERE code=$1
+           RETURNING code`,
+        [code]);
+
+        if (result.rows.length == 0) {
+            throw new ExpressError(`No such company: ${code}`, 404)
+        } else {
+            return res.json({"status": "deleted"});
+        }
+    
     } catch(e) {
         return next(e);
     }
