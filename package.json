@@ -19,6 +19,7 @@
   "homepage": "https://github.com/chadsmith686/express-biztime#readme",
   "dependencies": {
     "express": "^4.17.2",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "slugify": "^1.6.5"
   }
 }

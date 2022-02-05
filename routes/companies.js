@@ -1,6 +1,7 @@
 const express = require("express");
 const ExpressError = require("../expressError");
 const db = require("../db");
+const slugify = require("slugify");
 
 let router = new express.Router();
 
@@ -55,10 +56,15 @@ router.get("/:code", async (req, res, next) => {
     }
 });
 
-    
+// POST /companies
+// Adds a company.
+// Needs to be given JSON like: {code, name, description}
+// Returns obj of new company: {company: {code, name, description}}
+
 router.post("/", async (req, res, next) => {
     try {
-
+        let {name, description} = req.body;
+        let code = slugify
     } catch(e) {
         return next(e);
     }
